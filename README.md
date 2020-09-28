@@ -1,3 +1,4 @@
+[![npm version](https://badge.fury.io/js/%40psyycker%2Freact-translation.svg)](https://badge.fury.io/js/%40psyycker%2Freact-translation)
 # React Translation
 React Translation is an easy to use Translation Library for React <br/>
 It is thought to be used with shared libraries and without instance conflicts. <br/>
