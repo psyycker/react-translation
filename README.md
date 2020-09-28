@@ -1,6 +1,7 @@
 # React Translation
 React Translation is an easy to use Translation Library for React <br/>
 It is thought to be used with shared libraries and without instance conflicts. <br/>
+This library is fairly new and shouldn't be use yet for production applications (Wait for the version 1) as it still needs works (Especially on the unit tests side)
 
 ## Installation
 ```
@@ -169,6 +170,7 @@ import { changeLocale } from "@psyycker/react-translations";
 - Support value override on default value
 - Write unit tests
 - Write better examples
+- Mocking service for a better targeting of labels when writting unit tests
 
 # License
 MIT
