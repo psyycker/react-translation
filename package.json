@@ -1,13 +1,30 @@
 {
   "name": "@psyycker/react-translation",
-  "version": "0.2.0",
-  "description": "A modern translation library for React",
+  "version": "0.2.1",
+  "description": "A modern translation library for React and React Native!",
   "main": "./build/index.js",
   "module": "./build/index.es.js",
   "files": [
     "build",
     "README.md"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/psyycker/react-translation"
+  },
+  "bugs": {
+    "url": "https://github.com/psyycker/react-translation/issues",
+    "email": "remy.villulles@gmail.com"
+  },
+  "keywords": [
+    "react",
+    "react native",
+    "react-native",
+    "translation",
+    "internationalisation",
+    "internationalization"
+  ],
+  "homepage": "https://github.com/psyycker/react-translation/blob/master/README.md",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c --environment NODE_ENV:production",
