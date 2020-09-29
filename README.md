@@ -1,8 +1,8 @@
 [![npm version](https://badge.fury.io/js/%40psyycker%2Freact-translation.svg)](https://badge.fury.io/js/%40psyycker%2Freact-translation)
 # React Translation
-React Translation is an easy to use Translation Library for React <br/>
+React Translation is an easy to use Translation Library for React and React Native! <br/>
 It is thought to be used with shared libraries and without instance conflicts. <br/>
-This library is fairly new and shouldn't be use yet for production applications (Wait for the version 1) as it still needs works (Especially on the unit tests side)
+This library is fairly new and shouldn't be use yet for production applications (Wait for the version 1.0) as it still needs work (Especially on the unit tests side)
 
 ## Installation
 ```
@@ -70,7 +70,9 @@ You can split your translation files and register them at different places. They
 
 ### Translate
 
-#### Using Hooks
+#### With React
+
+##### Using Hooks
 
 ```jsx
 import { useTranslation, changeLocale } from "@psyycker/react-translation"; import {useEffect} from "react";
@@ -88,7 +90,7 @@ function MyComponent() {
 }
 ```
 
-#### Using Component
+##### Using Component
 
 ```jsx
 import { Translation, changeLocale } from "@psyycker/react-translation"; import {useEffect} from "react";
@@ -105,6 +107,60 @@ function MyComponent() {
   )
 }
 ```
+
+#### With React Native
+
+```jsx
+import { useTranslation, changeLocale } from "@psyycker/react-translation"; import {useEffect} from "react";
+
+function MyComponent() {
+
+  const { getTranslation } = useTranslation();
+
+  return (
+    <Text>{getTranslation({
+      translationKey: "component.title",
+      defaultValue: "My Default Value"
+    })}</Text>
+  )
+}
+```
+
+##### Using Component
+
+```jsx
+import { Translation, changeLocale } from "@psyycker/react-translation"; import {useEffect} from "react";
+import { StyleSheet } from "react-native"
+
+const styles = StyleSheet.create({
+  textStyle: {
+    ...
+  }
+})
+
+function MyComponent() {
+
+  return (
+    <View>
+          <Translation 
+            // If you want to apply a react native style on Text Component
+            style={styles.textStyle}
+            translationKey="component.title" 
+            defaultValue="My default value"
+         />
+    </View>
+  )
+}
+```
+
+##### API of Translation Component
+
+| Property       | Type   | Optional | Description                                                                  |
+|----------------|--------|----------|------------------------------------------------------------------------------|
+| translationKey | String |          | The key defined in the JSON file                                             |
+| defaultValue   | String |          | The default value if the key is not found                                    |
+| parameters     | Object | Yes      | An object which contains the values which replace `{}` in the string           |
+| style          | Object | Yes      | Can either be a CSS in JS style (React) or a Stylesheet style (React Native) |
 
 #### Using parameters
 
@@ -128,7 +184,7 @@ import {useEffect} from "react";
 function MyComponent() {
 
   return (
-    <div>
+    <>
           <Translation 
             translationKey="component.title" 
             defaultValue="My default value"
@@ -136,7 +192,7 @@ function MyComponent() {
               input: "My custom input"
             }}
          />
-    </div>
+    </>
   )
 }
 ```
@@ -172,6 +228,7 @@ import { changeLocale } from "@psyycker/react-translations";
 - Write unit tests
 - Write better examples
 - Mocking service for a better targeting of labels when writting unit tests
+- Handle escaped {
 
 # License
 MIT
