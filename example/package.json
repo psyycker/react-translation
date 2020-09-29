@@ -14,7 +14,7 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
     "typescript": "~3.7.2",
-    "@psyycker/react-translation": "file:.."
+    "@psyycker/react-translation": "^0.2.2"
   },
   "scripts": {
     "start": "react-scripts start",
