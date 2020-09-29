@@ -1,30 +1,31 @@
-const node = document.body;
+import {generateUUID} from "./utils";
 
+let locale: string;
+
+const events: {[key: string]: (newLocale: string) => void} = {};
 
 export function getLocale(): string {
-  return window.locale;
+  return locale;
 }
 
-export function initLocalChangeEvent() {
-  if (window.localChangeEvent == null) {
-    window.localChangeEvent = new Event("localeChange");
+export function addEventListener(callback: (value: string) => void) {
+  let id: string;
+  do {
+    id = generateUUID();
+  } while (events[id] != null)
+  events[id] = (newLocale: string) => {
+    callback(newLocale)
+  };
+  return () => {
+    delete events[id];
   }
 }
 
-export function listenToLocaleChange(callback: any) {
-  if (node == null) {
-    throw new Error("No root id to attach the event")
-  }
-  // Returns the locale
-  return node.addEventListener("localeChange", () => {
-    callback(window.locale);
-  });
+async function dispatchEvent() {
+  Object.keys(events).forEach(key => events[key](locale));
 }
 
 export function changeLocale(newLocale: string) {
-  if (node == null) {
-    throw new Error("No root id to attach the event")
-  }
-  window.locale = newLocale;
-  node.dispatchEvent(window.localChangeEvent);
+  locale = newLocale;
+  dispatchEvent();
 }

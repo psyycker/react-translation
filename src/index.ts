@@ -1,14 +1,8 @@
-import { initLocalChangeEvent, changeLocale } from "./localeManager";
-import { initTranslationsChangeEvent } from "./translationsManager"
+import { changeLocale } from "./localeManager";
 
-(function (){
-  initLocalChangeEvent();
-  initTranslationsChangeEvent();
-})()
-
-export { listenToLocaleChange, changeLocale, getLocale } from "./localeManager"
+export { changeLocale, getLocale } from "./localeManager"
 export { useTranslation } from "./hooks"
-export { getTranslations, listenToTranslationChange, registerTranslations } from "./translationsManager"
+export { getTranslations, registerTranslations } from "./translationsManager"
 export { default as Translation } from "./TranslationComponent"
 
 export function setTranslationConfig({defaultLocale}: {defaultLocale: string}) {

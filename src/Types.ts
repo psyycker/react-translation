@@ -4,3 +4,8 @@ export interface TranslationObject {
 
 export type GetTranslationType = ({translationKey, defaultValue, parameters}: GetTranslationArgs) => any;
 export type GetTranslationArgs = {translationKey: string, defaultValue?: string, parameters?: object};
+
+export type actionType = {
+  type: string,
+  value: any
+}

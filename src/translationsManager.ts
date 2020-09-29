@@ -1,30 +1,33 @@
-const node = document.body;
+import {generateUUID} from "./utils";
+
+let translations: {};
+
+const events: {[key: string]: (newLocale: {}) => void} = {};
 
 
 export function getTranslations(): {} {
-  return window.translations;
+  return translations;
 }
 
-export function initTranslationsChangeEvent() {
-  if (window.translationChangeEvent == null) {
-    window.translationChangeEvent = new Event("translationsChange");
+export function addEventListener(callback: (value: {}) => void) {
+  let id: string;
+  do {
+    id = generateUUID();
+  } while (events[id] != null)
+  events[id] = (newTranslations: {}) => {
+    callback(newTranslations)
+  };
+  return () => {
+    delete events[id];
   }
 }
 
-export function listenToTranslationChange(callback: any) {
-  if (node == null) {
-    throw new Error("No root id to attach the event")
-  }
-  // Returns the translations
-  return node.addEventListener("translationChange", () => {
-    callback(window.translations);
-  });
+async function dispatchEvent() {
+  Object.keys(events).forEach(key => events[key](translations));
 }
 
 export function registerTranslations(newTranslations: any) {
-  if (node == null) {
-    throw new Error("No root id to attach the event")
-  }
-  window.translations = {...window.translations, ...newTranslations};
-  node.dispatchEvent(window.translationChangeEvent);
+
+  translations = {...translations, ...newTranslations};
+  dispatchEvent();
 }

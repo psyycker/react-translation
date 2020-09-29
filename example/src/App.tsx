@@ -22,8 +22,6 @@ function App() {
     }
   }, [locale])
 
-  const { getTranslation } = useTranslation();
-
 
   function handleClick() {
     setLocale((current) => current === "fr-FR" ? "en-US" : "fr-FR")

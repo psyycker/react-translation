@@ -1,22 +1,21 @@
-import {useCallback, useEffect, useMemo, useState} from "react";
-import {listenToLocaleChange, getLocale} from "./localeManager";
-import {listenToTranslationChange, getTranslations} from "./translationsManager";
+import {useEffect, useMemo, useState} from "react";
+import {getLocale, addEventListener} from "./localeManager";
+import {addEventListener as addEventListenerTranslations, getTranslations} from "./translationsManager";
 import {GetTranslationArgs, GetTranslationType, TranslationObject} from "./Types";
 import {addToCache, applyParametersToString, getCachedValue, getTranslationWithKey} from "./utils";
 
-
 export function useTranslation() {
-  const [locale, setLocale] = useState<string>(getLocale);
+  const [locale, setLocale] = useState<string>(getLocale());
   const [translations, setTranslations] = useState<TranslationObject>(getTranslations())
 
   useEffect(() => {
-    return listenToLocaleChange((newLocale: string) => {
+    return addEventListener((newLocale: string) => {
       setLocale(newLocale);
     })
   }, [])
 
   useEffect(() => {
-    return listenToTranslationChange((newTranslation: TranslationObject) => {
+    return addEventListenerTranslations((newTranslation: TranslationObject) => {
       setTranslations(newTranslation);
     })
   })

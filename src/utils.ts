@@ -37,3 +37,15 @@ export function applyParametersToString(result: string, params: {[key: string]: 
   })
   return newResult;
 }
+
+const LENGTH = 10;
+const CHARACTERS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+
+export function generateUUID(): string {
+  let value = '';
+  for (let i = 0; i < LENGTH; i += 1) {
+    const number = Math.floor(Math.random() * CHARACTERS.length);
+    value += CHARACTERS[number];
+  }
+  return value;
+}
