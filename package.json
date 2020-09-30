@@ -29,6 +29,7 @@
     "install": "npm run install:peers",
     "test": "jest",
     "test:coverage": "jest --coverage",
+    "test:ci": "CI=true jest --coverage",
     "build": "rollup -c --environment NODE_ENV:production",
     "build:dev": "rollup -c --watch",
     "prepublishOnly": "npm run build",
