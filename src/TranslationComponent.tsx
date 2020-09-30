@@ -1,18 +1,17 @@
-import React from "react";
+import * as React from "react";
 import {useTranslation} from "./hooks";
 
-type Props = {
+export type TranslationComponentProps = {
   translationKey: string;
   defaultValue: string;
   parameters?: object;
   style?: any
 }
 
-let rightFunction: React.FunctionComponent<Props>;
+let rightFunction: React.ReactElement<TranslationComponentProps>;
 
-try {
-  const { Text } = require("react-native");
-  rightFunction = function TranslationComponent({translationKey, defaultValue, parameters, style}: Props) {
+export function generateRNComponent(Text: any) {
+  return function TranslationComponentRN({translationKey, defaultValue, parameters, style}: TranslationComponentProps): React.ReactElement<TranslationComponentProps> {
     const { getTranslation } = useTranslation();
     return (
       <Text style={style}>
@@ -22,17 +21,26 @@ try {
       </Text>
     )
   }
+}
+
+export function TranslationComponentWeb({translationKey, defaultValue, parameters}: TranslationComponentProps): React.ReactElement<TranslationComponentProps> {
+  const { getTranslation } = useTranslation();
+  return (
+    <>
+      {getTranslation({
+        translationKey, defaultValue, parameters
+      })}
+    </>
+  )
+}
+
+try {
+  const { Text } = require("react-native");
+  // @ts-ignore
+  rightFunction = generateRNComponent(Text);
 } catch (e) {
-  rightFunction = function TranslationComponent({translationKey, defaultValue, parameters}: Props) {
-    const { getTranslation } = useTranslation();
-    return (
-      <>
-        {getTranslation({
-          translationKey, defaultValue, parameters
-        })}
-      </>
-    )
-  }
+  // @ts-ignore
+  rightFunction = TranslationComponentWeb;
 }
 
 export default rightFunction;

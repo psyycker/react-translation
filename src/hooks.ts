@@ -8,6 +8,7 @@ export function useTranslation() {
   const [locale, setLocale] = useState<string>(getLocale());
   const [translations, setTranslations] = useState<TranslationObject>(getTranslations())
 
+
   useEffect(() => {
     return addEventListener((newLocale: string) => {
       setLocale(newLocale);
@@ -21,6 +22,9 @@ export function useTranslation() {
   })
 
   const getTranslation: GetTranslationType = useMemo(() => {
+    if (locale == null || translations == null) {
+      return null;
+    }
     const language = translations[locale];
     return function _getTranslation({translationKey, defaultValue, parameters}: GetTranslationArgs) {
       let result = getCachedValue(translationKey, locale);
@@ -40,5 +44,7 @@ export function useTranslation() {
     }
   }, [locale, translations])
 
-  return {locale, getTranslation};
+  return {locale, getTranslation: (getTranslation? getTranslation :
+      /* istanbul ignore next */
+      ({defaultValue}: {defaultValue: string}) => defaultValue)};
 }

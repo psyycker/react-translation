@@ -1,6 +1,6 @@
 import {generateUUID} from "./utils";
 
-let locale: string;
+let locale = "";
 
 const events: {[key: string]: (newLocale: string) => void} = {};
 
@@ -28,4 +28,8 @@ async function dispatchEvent() {
 export function changeLocale(newLocale: string) {
   locale = newLocale;
   dispatchEvent();
+}
+
+export function reset() {
+  locale = "";
 }

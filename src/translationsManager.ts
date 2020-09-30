@@ -28,6 +28,11 @@ async function dispatchEvent() {
 
 export function registerTranslations(newTranslations: any) {
 
-  translations = {...translations, ...newTranslations};
+  translations = Object.assign({}, translations, newTranslations);
   dispatchEvent();
+}
+
+
+export function reset() {
+  translations = {};
 }

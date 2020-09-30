@@ -70,6 +70,7 @@
     "example",
     "dist",
     "node_modules",
-    "example-react-native"
+    "example-react-native",
+    "__tests__"
   ]
 }

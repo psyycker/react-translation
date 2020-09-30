@@ -229,6 +229,8 @@ import { changeLocale } from "@psyycker/react-translations";
 - Write better examples
 - Mocking service for a better targeting of labels when writting unit tests
 - Handle escaped {
+- Eslint config for better code
+- Warning in case of duplicate translations
 
 # License
 MIT
