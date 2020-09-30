@@ -225,7 +225,6 @@ import { changeLocale } from "@psyycker/react-translations";
 
 # TODO
 - Support value override on default value
-- Write unit tests
 - Write better examples
 - Mocking service for a better targeting of labels when writting unit tests
 - Handle escaped {
