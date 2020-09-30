@@ -4,4 +4,9 @@ orbs:
 workflows:
   node-tests:
     jobs:
-      - node/test:ci
+      build:
+        docker:
+          - image: circleci/node:12
+        steps:
+          - checkout
+          - run: npm run test:ci
