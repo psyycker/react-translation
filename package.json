@@ -42,6 +42,7 @@
     "@testing-library/react-hooks": "^5.1.1",
     "@testing-library/react-native": "^7.2.0",
     "@types/jest": "^26.0.22",
+    "@types/lodash": "^4.14.168",
     "@types/react": "^16.9.56",
     "@types/react-native": "^0.64.2",
     "jest": "^26.6.3",
@@ -61,5 +62,8 @@
     "react-native": ">=0.64.0"
   },
   "author": "Remy Villulles",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }

@@ -1,4 +1,5 @@
 import {generateUUID} from "./utils";
+import {merge} from "lodash";
 
 
 type TranslationObject = { [key: string]: string | TranslationObject };
@@ -40,10 +41,7 @@ export function registerTranslations(newTranslations: TranslationObject, namespa
     } else if ((acc[translationKey] as TranslationObject)[namespace] == null) {
       (acc[translationKey] as TranslationObject)[namespace] = newTranslationObject
     } else {
-      (acc[translationKey] as TranslationObject)[namespace] = {
-        ...(acc[translationKey] as TranslationObject)[namespace] as TranslationObject,
-        ...newTranslationObject
-      }
+      (acc[translationKey] as TranslationObject)[namespace] = merge((acc[translationKey] as TranslationObject)[namespace] as TranslationObject, newTranslationObject)
     }
     return acc;
 

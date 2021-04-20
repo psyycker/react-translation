@@ -64,13 +64,13 @@
 
     /* Advanced Options */
     "skipLibCheck": true,                     /* Skip type checking of declaration files. */
-    "forceConsistentCasingInFileNames": true  /* Disallow inconsistently-cased references to the same file. */
+    "forceConsistentCasingInFileNames": true,  /* Disallow inconsistently-cased references to the same file. */
+    "moduleResolution": "Node"
   },
   "exclude": [
     "example",
     "dist",
     "node_modules",
-    "example-react-native",
-    "__tests__"
+    "example-react-native"
   ]
 }
