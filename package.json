@@ -1,6 +1,6 @@
 {
   "name": "@psyycker/react-translation",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "A modern translation library for React and React Native!",
   "main": "./build/index.js",
   "module": "./build/index.es.js",

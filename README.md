@@ -1,4 +1,5 @@
 [![npm version](https://badge.fury.io/js/%40psyycker%2Freact-translation.svg)](https://badge.fury.io/js/%40psyycker%2Freact-translation)
+[![CircleCI](https://circleci.com/gh/psyycker/react-translation.svg?style=svg)](https://circleci.com/gh/psyycker/react-translation)
 # React Translation
 React Translation is an easy to use Translation Library for React and React Native! <br/>
 It is thought to be used with shared libraries and without instance conflicts. <br/>
