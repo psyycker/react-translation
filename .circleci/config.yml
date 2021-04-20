@@ -9,4 +9,6 @@ jobs:
       - checkout
       - run: npm install
       - run: npm run test:ci
-      - store_test_results
+      - store_test_results:
+          path: test-results
+
