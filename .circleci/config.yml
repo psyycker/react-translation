@@ -4,7 +4,7 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/node:14.16.1
+      - image: cimg/node:14.16.1
     steps:
       - checkout
       - run: npm run test:ci
