@@ -1,5 +1,5 @@
 import * as React from "react";
-import {useTranslation} from "./hooks";
+import {useTranslation} from "./hooks/translation-hooks";
 
 export type TranslationComponentProps = {
   translationKey: string;
@@ -8,7 +8,7 @@ export type TranslationComponentProps = {
   style?: any
 }
 
-let rightFunction: React.ReactElement<TranslationComponentProps>;
+let rightFunction = TranslationComponentWeb;
 
 export function generateRNComponent(Text: any) {
   return function TranslationComponentRN({translationKey, defaultValue, parameters, style}: TranslationComponentProps): React.ReactElement<TranslationComponentProps> {
@@ -33,14 +33,11 @@ export function TranslationComponentWeb({translationKey, defaultValue, parameter
     </>
   )
 }
-
 try {
   const { Text } = require("react-native");
   // @ts-ignore
   rightFunction = generateRNComponent(Text);
-} catch (e) {
-  // @ts-ignore
-  rightFunction = TranslationComponentWeb;
-}
+} catch (e) {}
+
 
 export default rightFunction;

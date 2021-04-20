@@ -2,11 +2,20 @@
 # React Translation
 React Translation is an easy to use Translation Library for React and React Native! <br/>
 It is thought to be used with shared libraries and without instance conflicts. <br/>
-This library is fairly new and shouldn't be use yet for production applications (Wait for the version 1.0) as it still needs work (Especially on the unit tests side)
+
+## Disclaimers
+Even is React Translation is quite stable by its simplicity, and you can easily use it on your tools,
+this is still a work in progress project and potential breaking changes may happen especially in the way that
+translations are being declared.
+<br/>
+Also, as the library is young, some features from bigger ones (like browser language detection) are not yet available
+and are planned for later
+<br/>
+I'm very glad to get feedbacks from you as it helps to improve this library at its early stage.
 
 ## Installation
 ```
-    npm install --save @psyycker/react-translation
+npm install --save @psyycker/react-translation
 ```
 
 ## Usage
@@ -16,7 +25,7 @@ This library is fairly new and shouldn't be use yet for production applications 
 In your index file (and in case of the usage of a shared library, in any index file) <br/>
 Import directly the library to initialise the events:
 ```js
-    import "@psyycker/react-translation"
+import "@psyycker/react-translation"
 ```
 
 ### Set default config
@@ -226,7 +235,7 @@ import { changeLocale } from "@psyycker/react-translations";
 # TODO
 - Support value override on default value
 - Write better examples
-- Mocking service for a better targeting of labels when writting unit tests
+- Mocking service for a better targeting of labels when writing unit tests
 - Handle escaped {
 - Eslint config for better code
 - Warning in case of duplicate translations

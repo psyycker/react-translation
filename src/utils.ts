@@ -1,14 +1,14 @@
-export function getTranslationWithKey(object: {[key: string]: any}, path: string | string[]): any {
+export function getTranslationWithKey(object: {[key: string]: any}, namespace: string, path: string | string[]): any {
   if (object == null) {
     return null;
   }
   if (!Array.isArray(path)) {
-    return getTranslationWithKey(object, path.split("."))
+    return getTranslationWithKey(object[namespace], namespace, path.split("."))
   }
   if (path.length === 1) {
     return object[path[0]];
   }
-  return getTranslationWithKey(object[path[0]], path.splice(1));
+  return getTranslationWithKey(object[path[0]], namespace, path.splice(1));
 }
 
 let cache: {[key: string]: string} = {};

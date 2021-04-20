@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks'
-import {useTranslation} from "../hooks";
+import {useTranslation} from "../hooks/translation-hooks";
 import {changeLocale} from "../localeManager";
 import {getTranslations, registerTranslations} from "../translationsManager";
 import {reset} from "../index";
