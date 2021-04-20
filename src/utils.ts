@@ -11,16 +11,6 @@ export function getTranslationWithKey(object: {[key: string]: any}, namespace: s
   return getTranslationWithKey(object[path[0]], namespace, path.splice(1));
 }
 
-let cache: {[key: string]: string} = {};
-
-export function getCachedValue(path: string, locale: string) {
-  return cache[`${path}__${locale}`]
-}
-
-export function addToCache(path: string, locale: string, value: string) {
-  cache[`${path}__${locale}`] = value
-}
-
 function replaceAll(str: string, pattern: string, value: string): string {
   let newStr = str;
   do {

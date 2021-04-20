@@ -1,4 +1,4 @@
-import { registerTranslations, getTranslations } from "../translationsManager";
+import {registerTranslations, getTranslations, reset} from "../translationsManager";
 import {TranslationObject} from "../Types";
 
 describe("translation manager", () => {
@@ -73,4 +73,19 @@ describe("translation manager", () => {
       expect((((result as TranslationObject)["english"] as TranslationObject)["test"] as TranslationObject)["key"]).toBe("translation")
     })
   });
+
+  it("Should reset the translations", () => {
+    const translations = {
+      "french": {
+        key: "traduction"
+      },
+      "english": {
+        key: "translation"
+      }
+    }
+    registerTranslations(translations, "test");
+    expect(Object.keys(getTranslations()).length > 0).toBeTruthy();
+    reset();
+    expect(Object.keys(getTranslations()).length > 0).toBeFalsy();
+  })
 })

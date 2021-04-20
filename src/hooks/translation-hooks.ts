@@ -2,7 +2,7 @@ import {useContext, useEffect, useMemo, useState} from "react";
 import {getLocale, addEventListener} from "../localeManager";
 import {addEventListener as addEventListenerTranslations, getTranslations} from "../translationsManager";
 import {GetTranslationArgs, GetTranslationType, TranslationObject} from "../Types";
-import {addToCache, applyParametersToString, getTranslationWithKey} from "../utils";
+import {applyParametersToString, getTranslationWithKey} from "../utils";
 import {NamespaceContext} from "../Namespace";
 
 export function useTranslation() {
@@ -40,9 +40,6 @@ export function useTranslation() {
         }
         if (!result) {
           result = getTranslationWithKey(language, "common", translationKey)
-        }
-        if (result) {
-          addToCache(translationKey, locale, result);
         }
       if (result) {
         if (parameters) {

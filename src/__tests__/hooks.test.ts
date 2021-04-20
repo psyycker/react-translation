@@ -1,7 +1,9 @@
 import { renderHook, act } from '@testing-library/react-hooks'
+import { renderHook as overrideRenderHook } from "../testutils/HookOverride"
 import {useTranslation} from "../hooks/translation-hooks";
 import {changeLocale} from "../localeManager";
 import {registerTranslations} from "../translationsManager";
+import {Namespace} from "../index";
 
 describe("Hooks functions", () => {
 
@@ -26,6 +28,28 @@ describe("Hooks functions", () => {
       });
       changeLocale("en-US");
     })
+    expect(result.current.getTranslation({
+      translationKey: "component.title",
+      defaultValue: "default"
+    })).toBe("myTranslation");
+  })
+
+  it("should use namespace", () => {
+    const { result } = overrideRenderHook(() => useTranslation(), {
+      // @ts-ignore
+      namespaces: ["toto", "tata"]
+    });
+    act(() => {
+      registerTranslations({
+        "en-US": {
+          "component": {
+            "title": "myTranslation"
+          }
+        }
+      }, "toto");
+      changeLocale("en-US");
+    })
+    // @ts-ignore
     expect(result.current.getTranslation({
       translationKey: "component.title",
       defaultValue: "default"
