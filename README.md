@@ -14,6 +14,10 @@ and are planned for later
 <br/>
 I'm very glad to get feedbacks from you as it helps to improve this library at its early stage.
 
+## Documentation
+
+You can find the documentation [here](https://psyycker.github.io/react-translation/docs/intro)
+
 ## Installation
 ```
 npm install --save @psyycker/react-translation
