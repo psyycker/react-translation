@@ -2,7 +2,7 @@ import {useContext, useEffect, useMemo, useState} from "react";
 import {getLocale, addEventListener} from "../localeManager";
 import {addEventListener as addEventListenerTranslations, getTranslations} from "../translationsManager";
 import {GetTranslationArgs, GetTranslationType, TranslationObject} from "../Types";
-import {applyParametersToString, getTranslationWithKey} from "../utils";
+import {applyParametersToString, getTranslationWithKey} from "../utils/translation-utils";
 import {NamespaceContext} from "../Namespace";
 
 export function useTranslation() {

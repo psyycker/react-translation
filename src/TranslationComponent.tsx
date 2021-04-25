@@ -1,5 +1,6 @@
 import * as React from "react";
 import {useTranslation} from "./hooks/translation-hooks";
+import {isReactNative} from "./utils/environment-utils";
 
 export type TranslationComponentProps = {
   translationKey: string;
@@ -33,11 +34,9 @@ export function TranslationComponentWeb({translationKey, defaultValue, parameter
     </>
   )
 }
-try {
+if (isReactNative()) {
   const { Text } = require("react-native");
-  // @ts-ignore
   rightFunction = generateRNComponent(Text);
-} catch (e) {}
-
+}
 
 export default rightFunction;

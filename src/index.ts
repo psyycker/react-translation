@@ -28,3 +28,14 @@ export function reset(): void {
   resetTranslationManager();
   resetLocaleManager();
 }
+
+let initialised = false;
+
+(function init() {
+  if (initialised) {
+    return;
+  }
+  setTranslationConfig({
+    defaultLocale: "en-US"
+  })
+})()

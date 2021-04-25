@@ -1,4 +1,4 @@
-import {generateUUID} from "./utils";
+import {generateUUID} from "./utils/translation-utils";
 
 let locale = "";
 

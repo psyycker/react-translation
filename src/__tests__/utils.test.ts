@@ -1,4 +1,4 @@
-import {getTranslationWithKey} from "../utils";
+import {getTranslationWithKey} from "../utils/translation-utils";
 
 describe('Utils', function () {
   it("Should get null translation", () => {
