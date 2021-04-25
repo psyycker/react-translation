@@ -18,7 +18,8 @@ export { changeLocale, getLocale } from "./localeManager"
 export { useTranslation } from "./hooks/translation-hooks"
 export { getTranslations, registerTranslations } from "./translationsManager"
 export { default as Translation } from "./TranslationComponent"
-export {default as Namespace} from "./Namespace"
+export {default as Namespace} from "./namespaces/Namespace"
+export {default as withNamespaces } from "./namespaces/withNamespaces"
 
 export function setTranslationConfig({defaultLocale}: {defaultLocale: string}) {
   changeLocale(defaultLocale)

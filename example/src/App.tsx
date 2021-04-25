@@ -5,6 +5,7 @@ import {
   registerTranslations,
   Translation,
   Namespace,
+  withNamespaces
 } from "@psyycker/react-translation";
 import enUS from "./translations/en-US.json";
 import frFR from "./translations/fr-FR.json";
@@ -57,9 +58,25 @@ function App() {
             :
             <Translation translationKey="component.title" defaultValue="My default value" parameters={{myWord: "Toto"}}/>
         }
+        <ComponentUsingWithConnected label="toto"/>
       </div>
     </div>
   );
 }
+
+registerTranslations({
+  "fr-FR": {
+    with: "avec"
+  },
+  "en-US": {
+    with: "with"
+  }
+}, "useWith")
+
+const ComponentUsingWithNamespace = ({label}: {label: string}) => {
+  return <div>{label}<Translation translationKey="with" defaultValue="default"/></div>
+}
+
+const ComponentUsingWithConnected = withNamespaces<{label: string}>(ComponentUsingWithNamespace, "useWith")
 
 export default App;

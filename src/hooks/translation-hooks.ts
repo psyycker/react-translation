@@ -3,7 +3,7 @@ import {getLocale, addEventListener} from "../localeManager";
 import {addEventListener as addEventListenerTranslations, getTranslations} from "../translationsManager";
 import {GetTranslationArgs, GetTranslationType, TranslationObject} from "../Types";
 import {applyParametersToString, getTranslationWithKey} from "../utils/translation-utils";
-import {NamespaceContext} from "../Namespace";
+import {NamespaceContext} from "../namespaces/Namespace";
 
 export function useTranslation() {
   const [locale, setLocale] = useState<string>(getLocale());
