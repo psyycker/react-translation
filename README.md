@@ -237,13 +237,8 @@ import { changeLocale } from "@psyycker/react-translations";
     
 ```
 
-# TODO
-- Support value override on default value
-- Write better examples
-- Mocking service for a better targeting of labels when writing unit tests
-- Handle escaped {
-- Eslint config for better code
-- Warning in case of duplicate translations
+# ROADMAP
+See the roadmap [here](https://github.com/psyycker/react-translation/projects/1)
 
 # License
 MIT
