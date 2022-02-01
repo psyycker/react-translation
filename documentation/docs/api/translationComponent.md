@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# Translation (React component)
+# Translation (React component and React Native component)
 
 | Prop         | Mandatory | default value | Type   | Description                                             |
 |--------------|-----------|---------------|--------|---------------------------------------------------------|
