@@ -30,7 +30,8 @@
     "test:ci": "CI=true jest --coverage",
     "build": "rimraf build && tsc",
     "prepublishOnly": "npm run build",
-    "publish:alpha": "npm test && npm publish --tag alpha"
+    "publish:alpha": "npm test && npm publish --tag alpha",
+    "publish": "npm test && npm publish"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.13.15",
