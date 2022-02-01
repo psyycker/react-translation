@@ -5,7 +5,7 @@ React Translation is an easy to use Translation Library for React and React Nati
 It is thought to be used with shared libraries and without instance conflicts. <br/>
 
 ## Disclaimers
-Even is React Translation is quite stable by its simplicity, and you can easily use it on your tools,
+Even if React Translation is quite stable by its simplicity, and you can easily use it on your tools,
 this is still a work in progress project and potential breaking changes may happen especially in the way that
 translations are being declared.
 <br/>

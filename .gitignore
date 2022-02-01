@@ -9,7 +9,7 @@
 /coverage
 
 # production
-/build
+build
 
 # misc
 .DS_Store
@@ -24,4 +24,4 @@ yarn-error.log*
 .idea
 
 # Project exclude paths
-/example/node_modules/
+/react/example/node_modules/

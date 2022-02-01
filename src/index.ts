@@ -1,28 +1,33 @@
 /* istanbul ignore file */
-import { changeLocale } from "./localeManager";
-import { reset as resetTranslationManager } from "./translationsManager"
-import { reset as resetLocaleManager } from "./localeManager"
+import { reset as resetTranslationManager } from "./translation-manager"
+import { reset as resetLocaleManager } from "./locale-manager"
+import {Plugin} from "./types";
+import { changeLocale, getLocale } from "./locale-manager"
+import useTranslation from "./hooks/use-translation"
+import { getTranslations, registerTranslations } from "./translation-manager"
+import Translation from "./translation-component"
+import Namespace from "./namespaces/namespace"
+import withNamespaces from "./namespaces/with-namespaces"
 
-/**
- * This is hiding a warning where React native cannot be found in a React (web) env
- */
-const warn = console.warn;
-console.warn = (message?: any, ...optionalParams: any[]) => {
-  if (typeof message === "string" && message.includes("Can't resolve 'react-native'")) {
-    return;
-  }
-  warn(message, optionalParams);
+const reactTranslation: any = {}
+
+const setTranslationConfig = ({defaultLocale}: {defaultLocale: string}) => {
+  changeLocale(defaultLocale)
 }
 
-export { changeLocale, getLocale } from "./localeManager"
-export { useTranslation } from "./hooks/translation-hooks"
-export { getTranslations, registerTranslations } from "./translationsManager"
-export { default as Translation } from "./TranslationComponent"
-export {default as Namespace} from "./namespaces/Namespace"
-export {default as withNamespaces } from "./namespaces/withNamespaces"
+reactTranslation.useTranslation = useTranslation
+reactTranslation.getTranslations = getTranslations
+reactTranslation.registerTranslations = registerTranslations
+reactTranslation.Translation = Translation
+reactTranslation.Namespace = Namespace
+reactTranslation.withNamespaces = withNamespaces
+reactTranslation.setTranslationConfig = setTranslationConfig
+reactTranslation.getLocale = getLocale
 
-export function setTranslationConfig({defaultLocale}: {defaultLocale: string}) {
-  changeLocale(defaultLocale)
+export function applyPlugin(plugin: Plugin) {
+  console.log(plugin)
+  console.log(reactTranslation)
+  plugin(reactTranslation)
 }
 
 export function reset(): void {
@@ -40,3 +45,5 @@ let initialised = false;
     defaultLocale: "en-US"
   })
 })()
+
+export default reactTranslation

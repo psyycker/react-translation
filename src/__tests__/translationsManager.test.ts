@@ -1,5 +1,5 @@
-import {registerTranslations, getTranslations, reset} from "../translationsManager";
-import {TranslationObject} from "../Types";
+import {registerTranslations, getTranslations, reset} from "../translation-manager";
+import {TranslationObject} from "../types";
 
 describe("translation manager", () => {
   describe('Register translations', () => {

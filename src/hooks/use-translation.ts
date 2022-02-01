@@ -1,16 +1,14 @@
 import {useContext, useEffect, useMemo, useState} from "react";
-import {getLocale, addEventListener} from "../localeManager";
-import {addEventListener as addEventListenerTranslations, getTranslations} from "../translationsManager";
-import {GetTranslationArgs, GetTranslationType, TranslationObject} from "../Types";
+import {getLocale, addEventListener} from "../locale-manager";
+import {addEventListener as addEventListenerTranslations, getTranslations} from "../translation-manager";
+import {GetTranslationArgs, GetTranslationType, TranslationObject} from "../types";
 import {applyParametersToString, getTranslationWithKey} from "../utils/translation-utils";
-import {NamespaceContext} from "../namespaces/Namespace";
+import {NamespaceContext} from "../namespaces/namespace";
 
-export function useTranslation() {
+export default function useTranslation() {
   const [locale, setLocale] = useState<string>(getLocale());
   const [translations, setTranslations] = useState<TranslationObject>(getTranslations())
   const { namespaces } = useContext(NamespaceContext);
-
-
 
   useEffect(() => {
     return addEventListener((newLocale: string) => {

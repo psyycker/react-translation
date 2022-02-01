@@ -1,9 +1,9 @@
 import { renderHook, act } from '@testing-library/react-hooks'
-import { renderHook as overrideRenderHook } from "../testutils/HookOverride"
-import {useTranslation} from "../hooks/translation-hooks";
-import {changeLocale} from "../localeManager";
-import {registerTranslations} from "../translationsManager";
-import {Namespace} from "../index";
+import { renderHook as overrideRenderHook } from "../test-utils/hook-override"
+import useTranslation from "../hooks/use-translation";
+import {changeLocale} from "../locale-manager";
+import {registerTranslations} from "../translation-manager";
+import reactTranslation from "../index";
 
 describe("Hooks functions", () => {
 

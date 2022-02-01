@@ -1,11 +1,11 @@
-import {getLocale, setTranslationConfig} from "../index";
-import {reset} from "../localeManager";
+import reactTranslation from "../index";
+import {reset} from "../locale-manager";
 
 describe('Locale Mananger', function () {
   it("Should reset", () => {
-    setTranslationConfig({defaultLocale: "en"})
-    expect(getLocale()).toBe("en");
+    reactTranslation.setTranslationConfig({defaultLocale: "en"})
+    expect(reactTranslation.getLocale()).toBe("en");
     reset();
-    expect(getLocale()).toBe("");
+    expect(reactTranslation.getLocale()).toBe("");
   })
 });

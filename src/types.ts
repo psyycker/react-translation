@@ -9,3 +9,5 @@ export type actionType = {
   type: string,
   value: any
 }
+
+export type Plugin = (reactTranslation: any) => void

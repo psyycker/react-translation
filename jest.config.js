@@ -10,7 +10,6 @@ module.exports = {
     "**/*.{ts,tsx}",
     "!**/node_modules/**",
     "__tests__",
-    "!rollup.config.js",
     "!coverage/**",
     "!build/**",
     "!example/**",

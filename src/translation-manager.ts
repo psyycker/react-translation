@@ -1,6 +1,5 @@
-import {merge} from "lodash";
+import merge from "lodash/merge";
 import {generateUUID} from "./utils/translation-utils";
-
 
 type TranslationObject = { [key: string]: string | TranslationObject };
 

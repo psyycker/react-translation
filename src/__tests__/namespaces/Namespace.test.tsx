@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import Namespace, {NamespaceContext} from "../../namespaces/Namespace";
+import Namespace, {NamespaceContext} from "../../namespaces/namespace";
 import {render, screen} from "@testing-library/react";
 
 function NamespaceTester() {
