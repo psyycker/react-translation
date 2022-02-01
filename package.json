@@ -29,10 +29,11 @@
     "test:coverage": "jest --coverage",
     "test:ci": "CI=true jest --coverage",
     "build": "rimraf build && tsc",
-    "prepublishOnly": "npm run build",
-    "publish:alpha": "npm test && npm publish --tag alpha",
-    "publish": "npm test && npm publish",
-    "lint:fix": "eslint --ext .ts,.tsx ./src --fix"
+    "prepublishOnly": "npm run test:coverage && npm run lint && npm run build",
+    "publish:alpha": "npm publish --tag alpha",
+    "publish": "npm publish",
+    "lint:fix": "eslint --ext .ts,.tsx ./src --fix",
+    "lint": "eslint --ext .ts,.tsx ./src"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.13.15",
