@@ -5,7 +5,6 @@ export default function withNamespaces<Type>(
   Component: React.ElementType,
   ...namespaces: string[]
 ) {
-  return function (props: Type) {
-    return <Namespace namespaces={namespaces}><Component {...props} /></Namespace>;
-  };
+  // eslint-disable-next-line react/jsx-props-no-spreading
+  return (props: Type) => <Namespace namespaces={namespaces}><Component {...props} /></Namespace>;
 }

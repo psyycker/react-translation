@@ -1,3 +1,6 @@
+/* istanbul ignore file */
+// No way to test this as it's react native and the project is react based
+
 import React from 'react';
 import { Text } from 'react-native';
 import useTranslation from '../hooks/use-translation';

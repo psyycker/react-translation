@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Translation component Should do the translation 1`] = `
-<DocumentFragment>
-  value
-</DocumentFragment>
-`;

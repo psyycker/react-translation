@@ -56,6 +56,7 @@ export default function useTranslation() {
 
   return {
     locale,
-    getTranslation: (getTranslation || (({ defaultValue }: {defaultValue: string}) => defaultValue)),
+    getTranslation: (getTranslation
+      || (({ defaultValue }: {defaultValue: string}) => defaultValue)),
   };
 }
