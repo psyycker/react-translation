@@ -1,26 +1,20 @@
-import * as React from "react";
-import useTranslation from "./hooks/use-translation";
+import * as React from 'react';
+import useTranslation from './hooks/use-translation';
+import { TranslationComponentProps } from './types';
 
-export type TranslationComponentProps = {
-  translationKey: string;
-  defaultValue: string;
-  parameters?: object;
-  style?: any
-}
-let TranslationComponent = ({translationKey, defaultValue, parameters}: TranslationComponentProps): React.ReactElement<TranslationComponentProps> => {
-  console.log("Yo")
+function TranslationComponent({
+  translationKey,
+  defaultValue,
+  parameters,
+}: TranslationComponentProps): React.ReactElement<TranslationComponentProps> {
   const { getTranslation } = useTranslation();
   return (
     <>
       {getTranslation({
-        translationKey, defaultValue, parameters
+        translationKey, defaultValue, parameters,
       })}
     </>
-  )
+  );
 }
 
-export const updateTranslationComponent = (newComponent: any) => {
-  TranslationComponent = newComponent
-}
-
-export default TranslationComponent
+export default TranslationComponent;

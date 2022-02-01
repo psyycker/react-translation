@@ -1,5 +1,5 @@
-import * as React from "react";
-import {useContext, useMemo} from "react";
+import * as React from 'react';
+import { useContext, useMemo } from 'react';
 
 interface Props {
   children: React.ReactElement;
@@ -12,12 +12,15 @@ interface INamespaceContext {
 }
 
 export const NamespaceContext = React.createContext<INamespaceContext>({
-  namespaces: []
-})
+  namespaces: [],
+});
 
-
-export default function Namespace({children, namespace, namespaces}: Props): React.ReactElement<Props> {
-  const {namespaces: namespacesCtx} = useContext(NamespaceContext);
+export default function Namespace({
+  children,
+  namespace,
+  namespaces,
+}: Props): React.ReactElement<Props> {
+  const { namespaces: namespacesCtx } = useContext(NamespaceContext);
 
   const processedNamespaces = useMemo(() => {
     if (namespace) {
@@ -27,7 +30,21 @@ export default function Namespace({children, namespace, namespaces}: Props): Rea
       return [...namespaces.reverse(), ...namespacesCtx];
     }
     return namespacesCtx;
-  }, [namespaces, namespace])
+  }, [namespaces, namespace]);
 
-  return <NamespaceContext.Provider value={{namespaces: processedNamespaces}}>{children}</NamespaceContext.Provider>
+  return (
+    <NamespaceContext.Provider
+      /* eslint-disable-next-line react/jsx-no-constructed-context-values */
+      value={{
+        namespaces: processedNamespaces,
+      }}
+    >
+      {children}
+    </NamespaceContext.Provider>
+  );
 }
+
+Namespace.defaultProps = {
+  namespace: undefined,
+  namespaces: undefined,
+};

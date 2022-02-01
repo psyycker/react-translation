@@ -1,6 +1,6 @@
-import {generateUUID} from "./utils/translation-utils";
+import { generateUUID } from './utils/translation-utils';
 
-let locale = "";
+let locale = '';
 
 const events: {[key: string]: (newLocale: string) => void} = {};
 
@@ -12,17 +12,17 @@ export function addEventListener(callback: (value: string) => void) {
   let id: string;
   do {
     id = generateUUID();
-  } while (events[id] != null)
+  } while (events[id] != null);
   events[id] = (newLocale: string) => {
-    callback(newLocale)
+    callback(newLocale);
   };
   return () => {
     delete events[id];
-  }
+  };
 }
 
 async function dispatchEvent() {
-  Object.keys(events).forEach(key => events[key](locale));
+  Object.keys(events).forEach((key) => events[key](locale));
 }
 
 export function changeLocale(newLocale: string) {
@@ -31,5 +31,5 @@ export function changeLocale(newLocale: string) {
 }
 
 export function reset() {
-  locale = "";
+  locale = '';
 }

@@ -1,33 +1,21 @@
 /* istanbul ignore file */
-import { reset as resetTranslationManager } from "./translation-manager"
-import { reset as resetLocaleManager } from "./locale-manager"
-import {Plugin} from "./types";
-import { changeLocale, getLocale } from "./locale-manager"
-import useTranslation from "./hooks/use-translation"
-import { getTranslations, registerTranslations } from "./translation-manager"
-import Translation from "./translation-component"
-import Namespace from "./namespaces/namespace"
-import withNamespaces from "./namespaces/with-namespaces"
+import { reset as resetTranslationManager } from './translation-manager';
+import { reset as resetLocaleManager, changeLocale } from './locale-manager';
+import { Plugin } from './types';
 
-const reactTranslation: any = {}
+export { changeLocale, getLocale } from './locale-manager';
+export { default as useTranslation } from './hooks/use-translation';
+export { getTranslations, registerTranslations } from './translation-manager';
+export { default as Translation } from './translation-component';
+export { default as Namespace } from './namespaces/namespace';
+export { default as withNamespaces } from './namespaces/with-namespaces';
 
-const setTranslationConfig = ({defaultLocale}: {defaultLocale: string}) => {
-  changeLocale(defaultLocale)
-}
-
-reactTranslation.useTranslation = useTranslation
-reactTranslation.getTranslations = getTranslations
-reactTranslation.registerTranslations = registerTranslations
-reactTranslation.Translation = Translation
-reactTranslation.Namespace = Namespace
-reactTranslation.withNamespaces = withNamespaces
-reactTranslation.setTranslationConfig = setTranslationConfig
-reactTranslation.getLocale = getLocale
+export const setTranslationConfig = ({ defaultLocale }: {defaultLocale: string}) => {
+  changeLocale(defaultLocale);
+};
 
 export function applyPlugin(plugin: Plugin) {
-  console.log(plugin)
-  console.log(reactTranslation)
-  plugin(reactTranslation)
+  plugin();
 }
 
 export function reset(): void {
@@ -35,15 +23,13 @@ export function reset(): void {
   resetLocaleManager();
 }
 
-let initialised = false;
+const initialised = false;
 
 (function init() {
   if (initialised) {
     return;
   }
   setTranslationConfig({
-    defaultLocale: "en-US"
-  })
-})()
-
-export default reactTranslation
+    defaultLocale: 'en-US',
+  });
+}());

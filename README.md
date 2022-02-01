@@ -1,8 +1,24 @@
 [![npm version](https://badge.fury.io/js/%40psyycker%2Freact-translation.svg)](https://badge.fury.io/js/%40psyycker%2Freact-translation)
 [![CircleCI](https://circleci.com/gh/psyycker/react-translation.svg?style=svg)](https://circleci.com/gh/psyycker/react-translation)
 # React Translation
-React Translation is an easy to use Translation Library for React and React Native! <br/>
+React Translation is an easy-to-use Translation Library for React and React Native! <br/>
 It is thought to be used with shared libraries and without instance conflicts. <br/>
+
+## /!\ Version 0.4 to 0.5 breaking change
+As using the same component for React and React Native was too complex and hard to maintain, <br/>
+decision have been taken to replace this generic component by 2 distinct components <br/>
+For React, nothing changed, but for react native, here is the new method:
+```jsx
+import TranslatedText from "@psyycker/react-translation/build/react-native/translated-text";
+
+...
+
+export default function () {
+  return <View>
+    <TranslatedText translationKey="key" defaultValue="toto"/>
+  </View>
+}
+```
 
 ## Disclaimers
 Even if React Translation is quite stable by its simplicity, and you can easily use it on your tools,
