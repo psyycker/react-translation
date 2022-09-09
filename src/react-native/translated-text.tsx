@@ -2,6 +2,8 @@
 // No way to test this as it's react native and the project is react based
 
 import React from 'react';
+/* eslint-disable */
+// @ts-ignore
 import { Text } from 'react-native';
 import useTranslation from '../hooks/use-translation';
 import { TranslationComponentProps } from '../types';
