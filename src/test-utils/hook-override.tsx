@@ -1,6 +1,6 @@
 /* istanbul ignore file */
 import React from 'react';
-import * as TL from '@testing-library/react-hooks';
+import * as TL from '@testing-library/react';
 import Namespace from '../namespaces/namespace';
 
 function renderHook(

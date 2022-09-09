@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react';
 import { renderHook as overrideRenderHook } from '../../test-utils/hook-override';
 import useTranslation from '../use-translation';
 import { changeLocale } from '../../locale-manager';
