@@ -4,14 +4,29 @@ sidebar_position: 1
 
 # Initialise the library
 
+> **Deprecation Warning**
+> Until the version 0.5.X, you had to import:
+> ```javascript
+>    import "@psyycker/react-translation"
+>```
+> in your index file. This is now **NOT** required anymore.
+
 This first step before using the app is initialising it. <br/>
-The simple fact that you are doing an import of the lib is doing. It's that simple!
+To do so, wrap your main component into our `TranslationProvider`
 
 ```jsx
-import "@psyycker/react-translation"
+import {TranslationProvider} from "@psyycker/react-translation"
+
+const App = () => {
+  return (
+    <TranslationProvider>
+      <App/>
+    </TranslationProvider>
+  )
+}
 ```
 
-Initialising React Translation is using default values:
+Initialising React Translation is setting default values:
 
 | Property         | Default value | Description|
 |--------------|-----------|---------------|

@@ -4,32 +4,23 @@ sidebar_position: 2
 
 # Register your Translations
 
-Registering your translation is very easy! <br/>
-First, you have to create a JSON file for each language <br/>
+The power of React Translation is into avoiding gigantic translations files. <br/>
+To get to this point, we implemented a registration system that merges translations to a single source of truth <br/>
 
-```
-Your awesome app/
-├─ src/
-│  ├─ index.js
-│  ├─ translations/
-│  │  ├─ en-US.json
-│  │  ├─ fr-FR.json
-```
-_This is only an example_
-<br/>
-When created, you can import them in your JS file and register them.
+## Register translations
+Registering translations is easy:
+```jsx
+import { registerTranslations } from '@psyycker/react-translation';
 
-```javascript
-import {registerTranslations} from "@psyycker/react-translation";
-import french from "./translations/fr-FR.json"
-import englishUS from "./translations/en-US.json"
-
+//Executed outside of the component
 registerTranslations({
-  "en-US": englishUS,
-  "fr-FR": french
-})
+  'en-US': {
+    yes: 'Yes'
+  },
+  'fr-FR': {
+    yes: 'Oui'
+  }
+});
 ```
-Now, you have registered your translations, the next step is to use them.
-
-> **⚠ ATTENTION**  
-> Always make sure to register translations outside your component so that it's done when it's imported.
+And that's it! Your translation is now ready to use. <br/>
+> The locales specified in the object need to fit with your choice of locales.

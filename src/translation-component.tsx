@@ -8,13 +8,9 @@ function TranslationComponent({
   parameters,
 }: TranslationComponentProps): React.ReactElement<TranslationComponentProps> {
   const { getTranslation } = useTranslation();
-  return (
-    <>
-      {getTranslation({
-        translationKey, defaultValue, parameters,
-      })}
-    </>
-  );
+  return getTranslation({
+    translationKey, defaultValue, parameters,
+  });
 }
 
 export default TranslationComponent;

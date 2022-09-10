@@ -254,7 +254,7 @@ import { changeLocale } from "@psyycker/react-translations";
 ```
 
 # ROADMAP
-See the roadmap [here](https://github.com/psyycker/react-translation/projects/1)
+See the roadmap [here](https://trello.com/b/aBwAR0S5/react-translation-roadmap)
 
 # License
 MIT

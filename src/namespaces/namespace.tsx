@@ -44,6 +44,11 @@ export default function Namespace({
   );
 }
 
+export const useNamespaces = () => {
+  const { namespaces } = useContext(NamespaceContext);
+  return namespaces;
+};
+
 Namespace.defaultProps = {
   namespace: undefined,
   namespaces: undefined,

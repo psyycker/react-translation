@@ -1,13 +1,21 @@
-import { renderHook, act } from '@testing-library/react';
+import { act } from '@testing-library/react';
 import { renderHook as overrideRenderHook } from '../../test-utils/hook-override';
 import useTranslation from '../use-translation';
 import { changeLocale } from '../../locale-manager';
 import { registerTranslations } from '../../translation-manager';
 
+const render = (
+  { namespaces = [] }
+    : {namespaces: string[]
+  } = { namespaces: [] },
+) => overrideRenderHook(() => useTranslation(), {
+  namespaces,
+});
+
 describe('useTranslation()', () => {
   it('should change the locale', () => {
-    const { result } = renderHook(() => useTranslation());
-    expect(result.current.locale).toBe('');
+    const { result } = render();
+    expect(result.current.locale).toBe('en-US');
     act(() => {
       changeLocale('fr-FR');
     });
@@ -15,7 +23,7 @@ describe('useTranslation()', () => {
   });
 
   it('should add some translations', () => {
-    const { result } = renderHook(() => useTranslation());
+    const { result } = render();
     act(() => {
       registerTranslations({
         'en-US': {
@@ -33,10 +41,7 @@ describe('useTranslation()', () => {
   });
 
   it('should use namespace', () => {
-    const { result } = overrideRenderHook(() => useTranslation(), {
-      // @ts-ignore
-      namespaces: ['toto', 'tata'],
-    });
+    const { result } = render({ namespaces: ['toto', 'tata'] });
     act(() => {
       registerTranslations({
         'en-US': {
@@ -55,7 +60,7 @@ describe('useTranslation()', () => {
   });
 
   it('should use default value', () => {
-    const { result } = renderHook(() => useTranslation());
+    const { result } = render();
     act(() => {
       changeLocale('en-US');
     });
@@ -67,7 +72,7 @@ describe('useTranslation()', () => {
 
   describe('With parameters', () => {
     it('should apply 1 parameter', () => {
-      const { result } = renderHook(() => useTranslation());
+      const { result } = render();
       act(() => {
         registerTranslations({
           'en-US': {
@@ -88,7 +93,7 @@ describe('useTranslation()', () => {
     });
 
     it('should apply 2 parameters', () => {
-      const { result } = renderHook(() => useTranslation());
+      const { result } = render();
       act(() => {
         registerTranslations({
           'en-US': {
@@ -111,7 +116,7 @@ describe('useTranslation()', () => {
   });
 
   it('should merge translations', () => {
-    const { result } = renderHook(() => useTranslation());
+    const { result } = render();
     act(() => {
       registerTranslations({
         'en-US': {
