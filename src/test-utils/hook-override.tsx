@@ -13,7 +13,13 @@ function renderHook(
   }: {namespaces?: string[]} = {},
 ): RenderHookResult<any, any> {
   function Wrapper({ children }: {children: React.ReactElement}) {
-    return <TranslationProvider><Namespace namespaces={namespaces}>{children}</Namespace></TranslationProvider>;
+    return (
+      <TranslationProvider>
+        <Namespace namespaces={namespaces}>
+          {children}
+        </Namespace>
+      </TranslationProvider>
+    );
   }
   return TL.renderHook(ui, { wrapper: Wrapper, ...renderOptions });
 }
