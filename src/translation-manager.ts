@@ -1,31 +1,22 @@
 import merge from 'lodash/merge';
-import { generateUUID } from './utils/translation-utils';
 
 type TranslationObject = { [key: string]: string | TranslationObject };
 
 let translations: TranslationObject;
 
-const events: {[key: string]: (newLocale: {}) => void} = {};
+let event: (newLocale: {}) => void;
 
 export function getTranslations(): {} {
   return translations;
 }
 
-export function addEventListener(callback: (value: {}) => void) {
-  let id: string;
-  do {
-    id = generateUUID();
-  } while (events[id] != null);
-  events[id] = (newTranslations: {}) => {
-    callback(newTranslations);
-  };
-  return () => {
-    delete events[id];
-  };
+export function setEventListener(callback: (value: {}) => void) {
+  event = callback;
 }
 
-async function dispatchEvent() {
-  Object.keys(events).forEach((key) => events[key](translations));
+function dispatchEvent() {
+  if (!event) return;
+  event(translations);
 }
 
 export function registerTranslations(newTranslations: TranslationObject, namespace: 'common' | string = 'common') {

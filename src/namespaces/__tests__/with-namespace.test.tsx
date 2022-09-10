@@ -1,6 +1,10 @@
 import * as React from 'react';
-import { render, screen } from '@testing-library/react';
+import {
+  render,
+  screen,
+} from '@testing-library/react';
 import { withNamespaces, Translation, registerTranslations } from '../../index';
+import TranslationProvider from '../../translation-provider';
 
 describe('withNamespaces', () => {
   function DummyComponent() {
@@ -13,7 +17,7 @@ describe('withNamespaces', () => {
       },
     });
     const Component = withNamespaces(DummyComponent, 'with');
-    render(<Component />);
+    render(<TranslationProvider><Component /></TranslationProvider>);
     expect(() => screen.getByText('with')).not.toThrow();
   });
 });

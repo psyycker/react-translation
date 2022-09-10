@@ -1,27 +1,14 @@
-import {
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
-import { getLocale, addEventListener } from '../locale-manager';
-import { addEventListener as addEventListenerTranslations, getTranslations } from '../translation-manager';
-import { GetTranslationArgs, GetTranslationType, TranslationObject } from '../types';
+import { useMemo } from 'react';
+import { GetTranslationArgs, GetTranslationType } from '../types';
 import { applyParametersToString, getTranslationWithKey } from '../utils/translation-utils';
-import { NamespaceContext } from '../namespaces/namespace';
+import { useNamespaces } from '../namespaces/namespace';
+import { useTranslations } from '../contexts/translations-context';
+import { useLocale } from '../contexts/locale-context';
 
 export default function useTranslation() {
-  const [locale, setLocale] = useState<string>(getLocale());
-  const [translations, setTranslations] = useState<TranslationObject>(getTranslations());
-  const { namespaces } = useContext(NamespaceContext);
-
-  useEffect(() => addEventListener((newLocale: string) => {
-    setLocale(newLocale);
-  }), []);
-
-  useEffect(() => addEventListenerTranslations((newTranslation: TranslationObject) => {
-    setTranslations(newTranslation);
-  }));
+  const locale = useLocale();
+  const translations = useTranslations();
+  const namespaces = useNamespaces();
 
   const getTranslation: GetTranslationType = useMemo(() => {
     if (locale == null || translations == null) {
