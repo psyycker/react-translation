@@ -1,6 +1,6 @@
 {
   "name": "@psyycker/react-translation",
-  "version": "0.6.0-alpha1",
+  "version": "0.6.0",
   "description": "A modern translation library for React!",
   "main": "./build/index.js",
   "files": [

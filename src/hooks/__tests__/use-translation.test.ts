@@ -1,9 +1,8 @@
-import { renderHook, act } from '@testing-library/react';
+import { act } from '@testing-library/react';
 import { renderHook as overrideRenderHook } from '../../test-utils/hook-override';
 import useTranslation from '../use-translation';
 import { changeLocale } from '../../locale-manager';
 import { registerTranslations } from '../../translation-manager';
-import TranslationProvider from '../../translation-provider';
 
 const render = (
   { namespaces = [] }
@@ -16,7 +15,7 @@ const render = (
 describe('useTranslation()', () => {
   it('should change the locale', () => {
     const { result } = render();
-    expect(result.current.locale).toBe('');
+    expect(result.current.locale).toBe('en-US');
     act(() => {
       changeLocale('fr-FR');
     });
