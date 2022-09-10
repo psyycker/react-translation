@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 export interface TranslationObject {
   [key: string]: object
 }
@@ -13,11 +15,6 @@ export type GetTranslationType = (({
   defaultValue,
   parameters,
 }: GetTranslationArgs) => any) | null;
-
-export type actionType = {
-  type: string,
-  value: any
-}
 
 export type Plugin = () => void
 
