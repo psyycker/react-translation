@@ -10,7 +10,7 @@ import { TranslationObject } from '../types';
 const TranslationsContext = createContext<TranslationObject>({});
 
 type Props = {
-  children: any
+  children: React.ReactNode
 }
 
 const TranslationsProvider = ({ children }: Props) => {

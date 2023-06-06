@@ -16,8 +16,6 @@ export type GetTranslationType = (({
   parameters,
 }: GetTranslationArgs) => any) | null;
 
-export type Plugin = () => void
-
 export type TranslationComponentProps = {
   translationKey: string;
   defaultValue: string;

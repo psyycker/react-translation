@@ -1,17 +1,15 @@
 import React from 'react';
 import TranslationsProvider from './contexts/translations-context';
 import LocaleProvider from './contexts/locale-context';
-import { init } from './translation-config';
 
 type Props = {
-  children: any;
+  children: React.ReactNode;
+  defaultLocale: string;
 }
 
-init();
-
-const TranslationProvider = ({ children }: Props) => (
+const TranslationProvider = ({ children, defaultLocale }: Props) => (
   <TranslationsProvider>
-    <LocaleProvider>
+    <LocaleProvider defaultLocale={defaultLocale}>
       {children}
     </LocaleProvider>
   </TranslationsProvider>

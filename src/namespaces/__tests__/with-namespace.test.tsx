@@ -17,7 +17,7 @@ describe('withNamespaces', () => {
       },
     });
     const Component = withNamespaces(DummyComponent, 'with');
-    render(<TranslationProvider><Component /></TranslationProvider>);
+    render(<TranslationProvider defaultLocale="en-US"><Component /></TranslationProvider>);
     expect(() => screen.getByText('with')).not.toThrow();
   });
 });

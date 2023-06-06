@@ -5,16 +5,22 @@ import { RenderHookResult } from '@testing-library/react';
 import Namespace from '../namespaces/namespace';
 import TranslationProvider from '../translation-provider';
 
+type AdditionalArguments = {
+  namespaces?: string[];
+  defaultLocale?: string;
+}
+
 function renderHook(
   ui: any,
   {
+    defaultLocale = 'en-US',
     namespaces = [],
     ...renderOptions
-  }: {namespaces?: string[]} = {},
+  }: AdditionalArguments = {},
 ): RenderHookResult<any, any> {
   function Wrapper({ children }: {children: React.ReactElement}) {
     return (
-      <TranslationProvider>
+      <TranslationProvider defaultLocale={defaultLocale}>
         <Namespace namespaces={namespaces}>
           {children}
         </Namespace>

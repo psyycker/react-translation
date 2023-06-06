@@ -1,10 +1,9 @@
 import React, {
   createContext, useCallback,
   useContext,
-  useEffect, useMemo,
+  useMemo,
   useState,
 } from 'react';
-import { changeLocale, getLocale, setEventListener } from '../locale-manager';
 
 type SetLocaleFct = (locale: string) => void;
 
@@ -14,18 +13,16 @@ const LocaleContext = createContext<{ locale: string; setLocale: SetLocaleFct }>
 });
 
 type Props = {
-  children: any
+  children: React.ReactNode,
+  defaultLocale: string;
 }
 
-const LocaleProvider = ({ children }: Props) => {
-  const [locale, setLocale] = useState<string>(getLocale());
-
-  useEffect(() => {
-    setEventListener(setLocale);
-  }, []);
+const LocaleProvider = ({ defaultLocale, children }: Props) => {
+  // TODO Version 0.9 -> Allow detection of the system language
+  const [locale, setLocale] = useState<string>(defaultLocale);
 
   const updateLocale = useCallback((newLocale: string) => {
-    changeLocale(newLocale);
+    setLocale(newLocale);
   }, []);
 
   const contextValue = useMemo(() => ({
