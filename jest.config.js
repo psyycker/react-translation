@@ -1,19 +1,20 @@
 module.exports = {
   transform: {
     '^.+\\.ts?$': 'ts-jest',
-    '^.+\\.tsx?$': 'ts-jest'
+    '^.+\\.tsx?$': 'ts-jest',
   },
   testEnvironment: 'jsdom',
   testRegex: '/src/.*\\.test?\\.tsx?$',
   moduleFileExtensions: ['ts', 'js', 'tsx'],
   collectCoverageFrom: [
-    "**/*.{ts,tsx}",
-    "!**/node_modules/**",
-    "__tests__",
-    "!coverage/**",
-    "!build/**",
-    "!example/**",
-    "!example-react-native/**"
+    '**/*.{ts,tsx}',
+    '!**/node_modules/**',
+    '__tests__',
+    '!coverage/**',
+    '!build/**',
+    '!example/**',
+    '!example-react-native/**',
+    '!example-templates/**',
   ],
   // coverageThreshold: {
   //   global: {
