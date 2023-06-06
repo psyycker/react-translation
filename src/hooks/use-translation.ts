@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 import { GetTranslationArgs } from '../types';
 import { applyParametersToString, getTranslationWithKey } from '../utils/translation-utils';
 import { useNamespaces } from '../namespaces/namespace';

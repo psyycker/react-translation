@@ -1,39 +1,76 @@
-import { act } from '@testing-library/react';
-import { renderHook as overrideRenderHook } from '../../test-utils/hook-override';
+import { act, renderHook } from '@testing-library/react';
 import useTranslation from '../use-translation';
-import { registerTranslations } from '../../translation-manager';
+import { useLocale } from '../../contexts/locale-context';
+import { useTranslations } from '../../contexts/translations-context';
+import { useNamespaces } from '../../namespaces/namespace';
 
-const render = (
-  { namespaces = [] }
-    : {namespaces: string[]
-  } = { namespaces: [] },
-) => overrideRenderHook(() => useTranslation(), {
-  namespaces,
-});
+jest.mock('../../contexts/locale-context', () => ({
+  useLocale: jest.fn(),
+}));
 
-// TODO fix all tests by changing the locale
-describe.skip('useTranslation()', () => {
+jest.mock('../../contexts/translations-context', () => ({
+  useTranslations: jest.fn(),
+}));
+
+jest.mock('../../namespaces/namespace', () => ({
+  useNamespaces: jest.fn(),
+}));
+
+const render = () => renderHook(() => useTranslation());
+
+const mockLocale = (locale: string) => {
+  (useLocale as jest.Mock).mockReturnValue(locale);
+};
+
+const mockTranslations = () => {
+  (useTranslations as jest.Mock).mockReturnValue({
+    'en-US': {
+      common: {
+        component: {
+          title: 'myTranslation',
+          titleOneInput: 'myTranslation {input}',
+          titleTwoInput: 'myTranslation {input} {input2}',
+        },
+      },
+      toto: {
+        component: {
+          title: 'ninja',
+        },
+      },
+    },
+    'fr-FR': {
+      common: {
+        component: {
+          title: 'ma traduction',
+        },
+      },
+    },
+  });
+};
+
+const mockNamespaces = (namespaces: string[] = []) => {
+  (useNamespaces as jest.Mock).mockReturnValue(namespaces);
+};
+
+describe('useTranslation()', () => {
+  beforeEach(() => {
+    mockLocale('en-US');
+    mockTranslations();
+    mockNamespaces([]);
+  });
+
   it('should change the locale', () => {
-    const { result } = render();
+    const { result, rerender } = render();
     expect(result.current.locale).toBe('en-US');
-    // act(() => {
-    //   changeLocale('fr-FR');
-    // });
+    mockLocale('fr-FR');
+    act(() => {
+      rerender();
+    });
     expect(result.current.locale).toBe('fr-FR');
   });
 
   it('should add some translations', () => {
     const { result } = render();
-    act(() => {
-      registerTranslations({
-        'en-US': {
-          component: {
-            title: 'myTranslation',
-          },
-        },
-      });
-      // changeLocale('en-US');
-    });
     expect(result.current.getTranslation({
       translationKey: 'component.title',
       defaultValue: 'default',
@@ -41,48 +78,32 @@ describe.skip('useTranslation()', () => {
   });
 
   it('should use namespace', () => {
-    const { result } = render({ namespaces: ['toto', 'tata'] });
-    act(() => {
-      registerTranslations({
-        'en-US': {
-          component: {
-            title: 'myTranslation',
-          },
-        },
-      }, 'toto');
-      // changeLocale('en-US');
-    });
-    // @ts-ignore
+    mockNamespaces(['toto']);
+    const { result } = render();
     expect(result.current.getTranslation({
       translationKey: 'component.title',
       defaultValue: 'default',
-    })).toBe('myTranslation');
+    })).toBe('ninja');
   });
 
   it('should use default value', () => {
     const { result } = render();
-    act(() => {
-      // changeLocale('en-US');
-    });
     expect(result.current.getTranslation({
       translationKey: 'component.thisdoesntexists',
       defaultValue: 'default',
     })).toBe('default');
   });
 
+  it('should use the key', () => {
+    const { result } = render();
+    expect(result.current.getTranslation({
+      translationKey: 'component.thisdoesntexists',
+    })).toBe('component.thisdoesntexists');
+  });
+
   describe('With parameters', () => {
     it('should apply 1 parameter', () => {
       const { result } = render();
-      act(() => {
-        registerTranslations({
-          'en-US': {
-            component: {
-              titleOneInput: 'myTranslation {input}',
-            },
-          },
-        });
-        // changeLocale('en-US');
-      });
       expect(result.current.getTranslation({
         translationKey: 'component.titleOneInput',
         defaultValue: 'default',
@@ -94,16 +115,6 @@ describe.skip('useTranslation()', () => {
 
     it('should apply 2 parameters', () => {
       const { result } = render();
-      act(() => {
-        registerTranslations({
-          'en-US': {
-            component: {
-              titleTwoInput: 'myTranslation {input} {input2}',
-            },
-          },
-        });
-        // changeLocale('en-US');
-      });
       expect(result.current.getTranslation({
         translationKey: 'component.titleTwoInput',
         defaultValue: 'default',
@@ -113,34 +124,5 @@ describe.skip('useTranslation()', () => {
         },
       })).toBe('myTranslation test test2');
     });
-  });
-
-  it('should merge translations', () => {
-    const { result } = render();
-    act(() => {
-      registerTranslations({
-        'en-US': {
-          component: {
-            title: 'myTranslation',
-          },
-        },
-      });
-      registerTranslations({
-        'en-US': {
-          component: {
-            title2: 'myTranslation2',
-          },
-        },
-      });
-      // changeLocale('en-US');
-    });
-    expect(result.current.getTranslation({
-      translationKey: 'component.title',
-      defaultValue: 'default',
-    })).toBe('myTranslation');
-    expect(result.current.getTranslation({
-      translationKey: 'component.title2',
-      defaultValue: 'default',
-    })).toBe('myTranslation2');
   });
 });
