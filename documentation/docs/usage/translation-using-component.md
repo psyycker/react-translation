@@ -6,6 +6,7 @@ sidebar_position: 4
 
 The second way is using a component. It takes the same props as the hook parameters.
 <br/>
+_This works on both React and React Native_
 
 ```jsx
 import {Translation} from "@psyycker/react-translation";

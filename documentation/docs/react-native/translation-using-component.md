@@ -9,10 +9,10 @@ For maintenance reasons, React and React Native are using different components a
 needs to be done using Tree Shaking (See example)
 
 ```jsx
-import TranslatedText from "@psyycker/react-translation/build/react-native/translated-text";
+import { Transation } from "@psyycker/react-translation";
 
 function MyComponent() {
 
-  return <div><TranslatedText translationKey="myKey" defaultValue="my default value"/></div>
+  return <div><Transation translationKey="myKey" defaultValue="my default value"/></div>
 }
 ```

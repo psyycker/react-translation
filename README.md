@@ -4,29 +4,14 @@
 React Translation is an easy-to-use Translation Library for React and React Native! <br/>
 It is thought to be used with shared libraries and without instance conflicts. <br/>
 
-## /!\ Version 0.4 to 0.5 breaking change
-As using the same component for React and React Native was too complex and hard to maintain, <br/>
-decision have been taken to replace this generic component by 2 distinct components <br/>
-For React, nothing changed, but for react native, here is the new method:
-```jsx
-import TranslatedText from "@psyycker/react-translation/build/react-native/translated-text";
-
-...
-
-export default function () {
-  return <View>
-    <TranslatedText translationKey="key" defaultValue="toto"/>
-  </View>
-}
-```
+## /!\ Version 0.7 to 0.8 breaking change
+React and React Native components are not seamlessly integrated together. Which means that it is now possible to use
+in the same way the `Translation` component for both React and React Native.
 
 ## Disclaimers
 Even if React Translation is quite stable by its simplicity, and you can easily use it on your tools,
 this is still a work in progress project and potential breaking changes may happen especially in the way that
 translations are being declared.
-<br/>
-Also, as the library is young, some features from bigger ones (like browser language detection) are not yet available
-and are planned for later
 <br/>
 I'm very glad to get feedbacks from you as it helps to improve this library at its early stage.
 

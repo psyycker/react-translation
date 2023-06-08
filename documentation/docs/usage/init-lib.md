@@ -15,7 +15,7 @@ This first step before using the app is initialising it. <br/>
 To do so, wrap your main component into our `TranslationProvider`
 
 ```jsx
-import {TranslationProvider} from "@psyycker/react-translation"
+import { TranslationProvider } from "@psyycker/react-translation"
 
 const App = () => {
   return (

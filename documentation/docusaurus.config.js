@@ -2,8 +2,8 @@
 module.exports = {
   title: 'React Translation',
   tagline: 'Modern translation library for React and React Native',
-  url: 'https://github.com/psyycker/react-translation',
-  baseUrl: '/react-translation/',
+  url: 'https://github.com',
+  baseUrl: 'psyycker/react-translation',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
