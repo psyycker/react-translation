@@ -1,6 +1,6 @@
 {
   "name": "@psyycker/react-translation",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "author": "Remy Villulles",
   "license": "MIT",
   "description": "A modern translation library for React!",

@@ -12,9 +12,7 @@ module.exports = {
     '__tests__',
     '!coverage/**',
     '!build/**',
-    '!example/**',
-    '!example-react-native/**',
-    '!example-templates/**',
+    '!examples/**',
   ],
   // coverageThreshold: {
   //   global: {
