@@ -25,4 +25,3 @@ yarn-error.log*
 
 # Project exclude paths
 /react/example/node_modules/
-example

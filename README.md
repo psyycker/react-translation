@@ -256,5 +256,8 @@ import { changeLocale } from "@psyycker/react-translations";
 # ROADMAP
 See the roadmap [here](https://trello.com/b/aBwAR0S5/react-translation-roadmap)
 
+# Development and examples
+See `development.md` to see how to use the examples and participate in the repo
+
 # License
 MIT

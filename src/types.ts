@@ -18,7 +18,7 @@ export type GetTranslationType = (({
 
 export type TranslationComponentProps = {
   translationKey: string;
-  defaultValue: string;
+  defaultValue?: string;
   parameters?: object;
   style?: any
 }

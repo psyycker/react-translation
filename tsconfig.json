@@ -18,7 +18,6 @@
   "exclude": [
     "node_modules",
     "build",
-    "example",
-    "example-templates"
+    "examples"
   ]
 }
