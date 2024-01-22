@@ -5,7 +5,7 @@ React Translation is an easy-to-use Translation Library for React and React Nati
 It is thought to be used with shared libraries and without instance conflicts. <br/>
 
 ## /!\ Version 0.7 to 0.8 breaking change
-React and React Native components are not seamlessly integrated together. Which means that it is now possible to use
+React and React Native components are now seamlessly integrated together. Which means that it is now possible to use
 in the same way the `Translation` component for both React and React Native.
 
 ## Disclaimers
